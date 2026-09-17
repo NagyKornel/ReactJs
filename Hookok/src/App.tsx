@@ -7,7 +7,7 @@ const App = () => {
   return (
     <>
       <h1>Hello World!</h1>
-      <Bemutatkozas nev={"Valaki"} kor={kor} />
+      <Bemutatkozas nev={"Valaki"} kor={kor} id={1} />
     </>
   );
 };
