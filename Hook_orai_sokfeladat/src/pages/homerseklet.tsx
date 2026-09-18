@@ -1,7 +1,6 @@
 import { useState } from "react";
-import "./App.css";
 
-function App() {
+const Homerseklet = () => {
   const [cel, setCel] = useState<number>(0);
   const [far, setFar] = useState<string>("");
   const [kel, setKel] = useState<string>("");
@@ -21,6 +20,5 @@ function App() {
       <p>{kel}</p>
     </>
   );
-}
-
-export default App;
+};
+export default Homerseklet;
