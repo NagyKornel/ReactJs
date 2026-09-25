@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const Szamologep = () => {
-  const [szam1, setSzam1] = useState<number>(0);
-  const [szam2, setSzam2] = useState<number>(0);
+  const inputRef1 = useRef(null);
+  const inputRef2 = useRef(null);
   const [muvelet, setMuvelet] = useState<string>("+");
   const [eredmeny, setEredmeny] = useState<string>("");
 
   return (
     <>
-      <input onChange={(e) => setSzam1(Number(e.target.value))} type="number" />
+      <input ref={inputRef1} type="number" />
       <select
         onChange={(e) => setMuvelet(String(e.target.value))}
         name="opciok"
@@ -19,21 +19,29 @@ const Szamologep = () => {
         <option value="*">*</option>
         <option value="/">/</option>
       </select>
-      <input onChange={(e) => setSzam2(Number(e.target.value))} type="number" />
+      <input ref={inputRef2} type="number" />
       <button
         onClick={() => {
           switch (muvelet) {
             case "+":
-              setEredmeny(`${szam1 + szam2}`);
+              setEredmeny(
+                `${Number(inputRef1.current.value) + Number(inputRef2.current.value)}`,
+              );
               break;
             case "-":
-              setEredmeny(`${szam1 - szam2}`);
+              setEredmeny(
+                `${Number(inputRef1.current.value) - Number(inputRef2.current.value)}`,
+              );
               break;
             case "*":
-              setEredmeny(`${szam1 * szam2}`);
+              setEredmeny(
+                `${Number(inputRef1.current.value) * Number(inputRef2.current.value)}`,
+              );
               break;
             case "/":
-              setEredmeny(`${szam1 / szam2}`);
+              setEredmeny(
+                `${Number(inputRef1.current.value) / Number(inputRef2.current.value)}`,
+              );
               break;
           }
         }}

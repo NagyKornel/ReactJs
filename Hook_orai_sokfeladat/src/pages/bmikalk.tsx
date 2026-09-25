@@ -1,25 +1,19 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const Bmi = () => {
-  const [suly, setSuly] = useState<number>(0);
-  const [magassag, setMagassag] = useState<number>(0);
+  const inputRef1 = useRef(null);
+  const inputRef2 = useRef(null);
   const [valasz, setValasz] = useState<string>("");
 
   return (
     <>
-      <input
-        onChange={(e) => setSuly(Number(e.target.value))}
-        type="number"
-        placeholder="testsúly(kg)"
-      />
-      <input
-        onChange={(e) => setMagassag(Number(e.target.value))}
-        type="number"
-        placeholder="magasság(cm)"
-      />
+      <input ref={inputRef1} type="number" placeholder="testsúly(kg)" />
+      <input ref={inputRef2} type="number" placeholder="magasság(cm)" />
       <button
         onClick={() => {
-          const eredmeny = suly / Math.pow(magassag / 100, 2);
+          const eredmeny =
+            Number(inputRef1.current.value) /
+            Math.pow(Number(inputRef2.current.value) / 100, 2);
 
           if (eredmeny <= 15.9) {
             setValasz("Súlyos soványság");
@@ -37,6 +31,8 @@ const Bmi = () => {
             setValasz("Elhízott (II. fokú)");
           } else if (eredmeny > 40) {
             setValasz("Súlyosan elhízott (III. fokú)");
+          } else {
+            setValasz("HIBA");
           }
         }}
       >
