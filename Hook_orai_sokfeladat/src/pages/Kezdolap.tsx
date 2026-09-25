@@ -2,22 +2,19 @@ const Kezdolap = () => {
   return (
     <>
       <h1>Ez itt a kezdőlap</h1>
-      <button>
-        <a href="/szamologep">Számológépre</a>
-      </button>
-      <br />
-      <button>
-        <a href="/Penzvalto">Pénzváltóra</a>
-      </button>
-      <br />
-      <button>
-        <a href="/Bmi">BMI-re</a>
-      </button>
-      <br />
-      <button>
-        <a href="/Homerseklet">Hőmérséklet átváltóra</a>
-      </button>
-      <br />
+
+      <a href="/szamologep">
+        <button>Számológépre </button>
+      </a>
+      <a href="/Penzvalto">
+        <button>Pénzváltóra</button>
+      </a>
+      <a href="/Bmi">
+        <button>BMI-re </button>
+      </a>
+      <a href="/Homerseklet">
+        <button>Hőmérséklet átváltóra</button>
+      </a>
     </>
   );
 };
