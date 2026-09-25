@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 
 const Bmi = () => {
-  const inputRef1 = useRef(null);
-  const inputRef2 = useRef(null);
+  const inputRef1 = useRef<HTMLInputElement>(null);
+  const inputRef2 = useRef<HTMLInputElement>(null);
   const [valasz, setValasz] = useState<string>("");
 
   return (

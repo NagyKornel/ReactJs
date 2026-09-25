@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 
 const penzvalto = () => {
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [valuta, setValue] = useState<string>("usd");
   const [eredmeny, setEredmeny] = useState<number>(0);
 
@@ -15,8 +15,8 @@ const penzvalto = () => {
 
       <button
         onClick={() => {
-          if (valuta == "usd") setEredmeny(inputRef.current.value / 350);
-          else if (valuta == "eur") setEredmeny(inputRef.current.value / 380);
+          if (valuta == "usd") setEredmeny(Number(inputRef.current.value) / 350);
+          else if (valuta == "eur") setEredmeny(Number(inputRef.current.value) / 380);
         }}
       >
         Számítás
