@@ -4,7 +4,7 @@ export const Szamologep = () => {
   const [szam1, setSzam1] = useState<number>(0);
   const [szam2, setSzam2] = useState<number>(0);
   const [muvelet, setMuvelet] = useState<string>("+");
-  let eredmeny = 0;
+  const [eredmeny, setEredmeny] = useState<string>("");
   return (
     <>
       <input
@@ -27,16 +27,16 @@ export const Szamologep = () => {
         onClick={() => {
           switch (muvelet) {
             case "+":
-              eredmeny = Number(szam1) + Number(szam2);
+              setEredmeny(`${Number(szam1) + Number(szam2)}`);
               break;
             case "-":
-              eredmeny = Number(szam1) - Number(szam2);
+              setEredmeny(`${Number(szam1) - Number(szam2)}`);
               break;
             case "*":
-              eredmeny = Number(szam1) * Number(szam2);
+              setEredmeny(`${Number(szam1) * Number(szam2)}`);
               break;
             case "/":
-              eredmeny = Number(szam1) / Number(szam2);
+              setEredmeny(`${(Number(szam1) / Number(szam2)).toFixed(2)}`);
               break;
           }
         }}

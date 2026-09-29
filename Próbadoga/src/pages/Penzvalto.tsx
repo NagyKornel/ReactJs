@@ -3,7 +3,7 @@ import { useState } from "react";
 export const Penzvalto = () => {
   const [forint, setForint] = useState<number>(0);
   const [valuta, setValuta] = useState<string>("$");
-  let eredmeny = 0;
+  const [eredmeny, setEredmeny] = useState<string>("");
   return (
     <>
       <input
@@ -19,17 +19,17 @@ export const Penzvalto = () => {
         onClick={() => {
           switch (valuta) {
             case "$":
-              eredmeny = Number(forint) / 350;
+              setEredmeny(`${(Number(forint) / 350).toFixed(2)}`);
               break;
             case "€":
-              eredmeny = Number(forint) / 380;
+              setEredmeny(`${(Number(forint) / 380).toFixed(2)}`);
               break;
           }
         }}
       >
         Átváltás
       </button>
-      <p>`{eredmeny}`</p>
+      <p>{eredmeny}</p>
     </>
   );
 };
