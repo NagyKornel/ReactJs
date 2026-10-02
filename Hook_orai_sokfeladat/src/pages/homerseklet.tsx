@@ -10,16 +10,9 @@ const Homerseklet = () => {
       <input ref={inputRef} type="number" />
       <button
         onClick={() => {
-          setFar(
-            `${inputRef.current.value} C =` +
-              String(Number(inputRef.current.value) * 1.8 + 32) +
-              " F",
-          );
-          setKel(
-            `${inputRef.current.value} C =` +
-              String(Number(inputRef.current.value) + 273.15) +
-              " K",
-          );
+          const s1 = Number(inputRef.current?.value);
+          setFar(`${s1} C =` + String(s1 * 1.8 + 32) + " F");
+          setKel(`${s1} C =` + String(s1 + 273.15) + " K");
         }}
       >
         Átváltás

@@ -15,8 +15,9 @@ const penzvalto = () => {
 
       <button
         onClick={() => {
-          if (valuta == "usd") setEredmeny(Number(inputRef.current.value) / 350);
-          else if (valuta == "eur") setEredmeny(Number(inputRef.current.value) / 380);
+          const s1 = Number(inputRef.current?.value);
+          if (valuta == "usd") setEredmeny(s1 / 350);
+          else if (valuta == "eur") setEredmeny(s1 / 380);
         }}
       >
         Számítás
