@@ -22,26 +22,21 @@ const Szamologep = () => {
       <input ref={inputRef2} type="number" />
       <button
         onClick={() => {
+          const s1 = Number(inputRef1.current?.value);
+          const s2 = Number(inputRef2.current?.value);
           switch (muvelet) {
             case "+":
-              setEredmeny(
-                `${Number(inputRef1.current.value) + Number(inputRef2.current.value)}`,
-              );
+              setEredmeny(`${s1 + s2}`);
               break;
             case "-":
-              setEredmeny(
-                `${Number(inputRef1.current.value) - Number(inputRef2.current.value)}`,
-              );
+              setEredmeny(`${s1 - s2}`);
+              break;
               break;
             case "*":
-              setEredmeny(
-                `${Number(inputRef1.current.value) * Number(inputRef2.current.value)}`,
-              );
+              setEredmeny(`${s1 * s2}`);
               break;
             case "/":
-              setEredmeny(
-                `${Number(inputRef1.current.value) / Number(inputRef2.current.value)}`,
-              );
+              setEredmeny(`${s1 / s2}`);
               break;
           }
         }}

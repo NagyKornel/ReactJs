@@ -11,9 +11,9 @@ const Bmi = () => {
       <input ref={inputRef2} type="number" placeholder="magasság(cm)" />
       <button
         onClick={() => {
-          const eredmeny =
-            Number(inputRef1.current.value) /
-            Math.pow(Number(inputRef2.current.value) / 100, 2);
+          const s1 = Number(inputRef1.current?.value);
+          const s2 = Number(inputRef2.current?.value);
+          const eredmeny = s1 / Math.pow(s2 / 100, 2);
 
           if (eredmeny <= 15.9) {
             setValasz("Súlyos soványság");
