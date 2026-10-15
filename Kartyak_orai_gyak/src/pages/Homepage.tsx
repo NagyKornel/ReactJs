@@ -2,6 +2,7 @@ import { Button, Card, Col, Row, Form } from "react-bootstrap";
 import { useRef, useState } from "react";
 import type { Pizza } from "../types/Pizza.ts";
 import pizzak from "../helper/Pizzak.ts";
+import { toast } from "react-toastify";
 
 const Homepage = () => {
   const nevRef = useRef<HTMLInputElement>(null);
@@ -23,9 +24,15 @@ const Homepage = () => {
       ar,
       img,
     };
-
-    setPizzaak((elozoPizzaak) => [...elozoPizzaak, ujPizza]);
-
+    const minar: number = 1000;
+    if (ar < minar) {
+      toast.error(`Az árnak legalább ${minar} Ft-nak kell lennie!`, {
+        autoClose: false,
+      });
+    } else {
+      setPizzaak((elozoPizzaak) => [...elozoPizzaak, ujPizza]);
+      toast.success("Pizza hozzáadva!");
+    }
     if (nevRef.current) nevRef.current.value = "";
     if (leirasRef.current) leirasRef.current.value = "";
     if (arRef.current) arRef.current.value = "";
@@ -37,14 +44,21 @@ const Homepage = () => {
       <h1 style={{ textAlign: "center" }}>Pizzák</h1>
       <hr />
 
-      <Row lg={4} md={3} sm={2} xs={1} className="g-3 mx-auto">
+      <Row lg={4} md={3} sm={2} xs={1}>
         {pizzaak.map((pizza, index) => (
           <Col key={`${pizza.nev}-${index}`}>
-            <Card className="h-100">
+            <Card
+              style={{
+                width: 400,
+                margin: "auto",
+                marginBottom: "20px",
+                height: "100%",
+              }}
+            >
               <Card.Img
                 variant="top"
                 src={pizza.img}
-                style={{ height: "200px", objectFit: "cover" }}
+                style={{ height: "200px", objectFit: "cover", width: "100%" }}
                 alt={pizza.nev}
               />
 
@@ -53,13 +67,17 @@ const Homepage = () => {
                 <Card.Text>{pizza.leiras}</Card.Text>
               </Card.Body>
 
-              <Card.Footer className="d-flex justify-content-between align-items-center">
+              <Card.Footer>
                 <strong>{pizza.ar} Ft</strong>
                 <Button
+                  style={{ float: "right" }}
                   variant="danger"
                   onClick={() => {
-                    const ujlista = pizzaak.filter((p) => p !== pizza);
+                    const ujlista = pizzaak.filter(
+                      (_, index) => index !== pizzaak.indexOf(pizza),
+                    );
                     setPizzaak(ujlista);
+                    toast.success("Pizza törölve!");
                   }}
                 >
                   Delete
@@ -72,7 +90,7 @@ const Homepage = () => {
 
       <hr />
 
-      <div className="container mb-4">
+      <div style={{ maxWidth: "80%", margin: "0 auto" }}>
         <h2>Pizza hozzáadása</h2>
 
         <Form
@@ -86,8 +104,7 @@ const Homepage = () => {
             type="text"
             name="nev"
             placeholder="Pizza neve"
-            className="mb-2"
-            required
+            style={{ marginBottom: "10px" }}
           />
 
           <Form.Control
@@ -95,8 +112,7 @@ const Homepage = () => {
             type="text"
             name="leiras"
             placeholder="Pizza leírása"
-            className="mb-2"
-            required
+            style={{ marginBottom: "10px" }}
           />
 
           <Form.Control
@@ -105,8 +121,7 @@ const Homepage = () => {
             name="ar"
             placeholder="Pizza ára (Ft)"
             min="1"
-            className="mb-2"
-            required
+            style={{ marginBottom: "10px" }}
           />
 
           <Form.Control
@@ -114,8 +129,7 @@ const Homepage = () => {
             type="url"
             name="img"
             placeholder="Pizza kép URL"
-            className="mb-3"
-            required
+            style={{ marginBottom: "10px" }}
           />
 
           <Button variant="success" type="submit">
