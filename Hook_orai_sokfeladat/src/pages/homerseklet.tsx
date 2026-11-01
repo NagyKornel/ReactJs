@@ -1,17 +1,18 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const Homerseklet = () => {
-  const [cel, setCel] = useState<number>(0);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [far, setFar] = useState<string>("");
   const [kel, setKel] = useState<string>("");
   return (
     <>
       <h1>Hőmérséklet átváltó</h1>
-      <input onChange={(e) => setCel(Number(e.target.value))} type="number" />
+      <input ref={inputRef} type="number" />
       <button
         onClick={() => {
-          setFar(`${cel} C =` + String(cel * 1.8 + 32) + " F");
-          setKel(`${cel} C =` + String(cel + 273.15) + " K");
+          const s1 = Number(inputRef.current?.value);
+          setFar(`${s1} C =` + String(s1 * 1.8 + 32) + " F");
+          setKel(`${s1} C =` + String(s1 + 273.15) + " K");
         }}
       >
         Átváltás
