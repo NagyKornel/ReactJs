@@ -59,7 +59,7 @@ const Homepage = () => {
 
       <Row lg={4} md={3} sm={2} xs={1}>
         {pizzakasd.map((pizza, index) => (
-          <Col key={`${pizza.nev}-${index}`}>
+          <Col>
             <Card
               style={{
                 width: 400,
