@@ -22,27 +22,24 @@ export const Homepage = () => {
   const minar: number = 1000;
 
   const pizzaHozzaad = () => {
-    const nev: string = nevRef.current?.value.trim() || "";
-    const leiras: string = leirasRef.current?.value.trim() || "";
-    const ar: number = Number(arRef.current?.value.trim());
-    const img: Array<string> = imgRef.current?.value.trim().split(",") || [];
+    const ar: number = Number(arRef.current!.value);
     if (ar < minar) {
       toast.error("Az árnak legalább 1000 Ft-nak kell lennie!");
     } else {
       const ujPizza: Pizza = {
-        nev,
-        leiras,
-        ar,
-        img,
+        nev: nevRef.current!.value,
+        leiras: leirasRef.current!.value,
+        ar: Number(arRef.current!.value),
+        img: [imgRef.current!.value],
       };
       setPizzakasd([...pizzakasd, ujPizza]);
       toast.success("Sikeres hozzáadás!");
-
-      nevRef.current!.value = "";
-      leirasRef.current!.value = "";
-      arRef.current!.value = "";
-      imgRef.current!.value = "";
     }
+
+    nevRef.current!.value = "";
+    leirasRef.current!.value = "";
+    arRef.current!.value = "";
+    imgRef.current!.value = "";
   };
 
   return (
