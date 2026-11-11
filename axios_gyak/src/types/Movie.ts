@@ -3,6 +3,6 @@ export type Movie = {
   genre: string;
   release_year: number;
   price: number;
-  images: [string];
+  images: string[];
   id?: number;
 };

@@ -1,44 +1,42 @@
-import { Card, Carousel, Col, Row } from "react-bootstrap";
-import type { Movie } from "../types/Movie";
 import { useEffect, useState } from "react";
+import type { Movie } from "../types/Movie";
 import apiClient, { BACKEND_URL } from "../api/apiClient";
+import { Card, Carousel, Col, Row } from "react-bootstrap";
 
 export const Homepage = () => {
   const [filmek, setFilmek] = useState<Array<Movie>>([]);
 
   useEffect(() => {
-    apiClient.get("/movies").then((response) => setFilmek(response.data));
+    apiClient.get("/movies").then((result) => {
+      setFilmek(result.data);
+    });
   }, []);
 
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Filmek</h1>
-      <Row lg={4} md={3} sm={2}>
-        {filmek.map((m) => (
-          <Col>
-            <Card>
+      <Row lg={4} md={3} sm={2} style={{ margin: "auto" }}>
+        {filmek.map((p) => (
+          <Col style={{ margin: "auto" }}>
+            <Card style={{ margin: "auto" }}>
               <Card.Body>
                 <Carousel interval={null}>
-                  {m.images.map((e) => (
+                  {p.images.map((e) => (
                     <Carousel.Item>
                       <img
+                        style={{ width: "400px", height: "400px" }}
                         src={`${BACKEND_URL}/images/${e}`}
-                        style={{
-                          height: "300px",
-                          width: "100%",
-                          objectFit: "cover",
-                        }}
                       />
                     </Carousel.Item>
                   ))}
                 </Carousel>
-                <Card.Title>
-                  {m.title} - {m.release_year}
-                </Card.Title>
-                <Card.Text>{m.genre}</Card.Text>
+                <Card.Title>{p.title}</Card.Title>
+                <Card.Text>
+                  {p.genre} - {p.release_year}
+                </Card.Text>
               </Card.Body>
               <Card.Footer>
-                <strong>{m.price}</strong>
+                <strong>{p.price} Ft</strong>
               </Card.Footer>
             </Card>
           </Col>

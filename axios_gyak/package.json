@@ -1,5 +1,5 @@
 {
-  "name": "axios_orai_gyak",
+  "name": "axios_gyak",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,13 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^1.21.0",
+    "axios": "^1.21.1",
     "bootstrap": "^5.3.8",
     "react": "^19.3.1",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.3.1",
-    "react-router-dom": "^7.18.5",
-    "react-toastify": "^11.2.0"
+    "react-router-dom": "^7.18.5"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

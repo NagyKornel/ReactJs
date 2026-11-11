@@ -3,7 +3,6 @@ import { createRoot } from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Homepage } from "./pages/Homepage";
-import { ToastContainer } from "react-toastify/unstyled";
 import { OneMovie } from "./pages/OneMovie";
 
 createRoot(document.getElementById("root")!).render(
@@ -14,6 +13,5 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/m/:id" element={<OneMovie />} />
       </Routes>
     </BrowserRouter>
-    <ToastContainer theme="colored" position="top-right" />
   </StrictMode>,
 );
