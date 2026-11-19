@@ -1,7 +1,7 @@
 export const NotFound = () => {
   return (
     <>
-      <h1>404 Error - Page Not Found</h1>
+      <h1 style={{ textAlign: "center" }}>404 Error - Page Not Found</h1>
     </>
   );
 };
